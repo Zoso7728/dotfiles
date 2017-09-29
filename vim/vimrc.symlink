@@ -1,15 +1,15 @@
 call plug#begin('~/.vim/plugged')
 
 " Basic plugins
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'jiangmiao/auto-pairs'
-Plug 'mileszs/ack.vim'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'css', 'less', 'scss', 'json'] }
-Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'jiangmiao/auto-pairs'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'css', 'less', 'scss', 'json'] }
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Shougo/unite.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'mileszs/ack.vim'
+Plug 'sbdchd/neoformat'
 
 call plug#end()
 
