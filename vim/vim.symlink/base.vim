@@ -55,6 +55,15 @@ map <C-H> <C-W>h
 map <C-L> <C-W>l
 nnoremap vv ^<C-v>g_
 
+" Swap between current file and most recently edited file
+nnoremap <leader><leader> <c-^>
+
+" Tracks cursor position per file. When file is reopened, cursor will appear where it once was
+autocmd BufReadPost *
+   \ if line("'\"") > 0 && line("'\"") <= line("$") |
+   \   exe "normal g`\"" |
+   \ endif
+
 " Unknown configs
 autocmd StdinReadPre * let s:std_in=1
 
@@ -68,11 +77,13 @@ let g:prettier#config#print_width = 110
 
 silent! so .vimlocal
 let g:neoformat_javascript_prettier = {
-\ 'exe': './node_modules/.bin/prettier',
 \ 'args': ['--stdin', '--print-width 110', '--tab-width 4', '--single-quote', '--trailing-comma es5'],
 \ 'stdin': 1,
 \ 'no_append': 1,
 \ }
+
+" Set the prettier CLI executable path
+"let g:prettier#exec_cmd_path = "~/path/to/cli/prettier"
 
 let g:neoformat_enabled_javascript = ['prettier']
 
