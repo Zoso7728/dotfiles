@@ -67,26 +67,6 @@ autocmd BufReadPost *
 " Unknown configs
 autocmd StdinReadPre * let s:std_in=1
 
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json Prettier
-let g:prettier#config#tab_width = 4
-let g:prettier#config#trailing_comma = 'all'
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#semi = 'false'
-let g:prettier#config#print_width = 110
-
-silent! so .vimlocal
-let g:neoformat_javascript_prettier = {
-\ 'args': ['--stdin', '--print-width 110', '--tab-width 4', '--single-quote', '--trailing-comma es5'],
-\ 'stdin': 1,
-\ 'no_append': 1,
-\ }
-
-" Set the prettier CLI executable path
-"let g:prettier#exec_cmd_path = "~/path/to/cli/prettier"
-
-let g:neoformat_enabled_javascript = ['prettier']
-
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"

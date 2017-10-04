@@ -4,7 +4,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jiangmiao/auto-pairs'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'css', 'less', 'scss', 'json'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/unite.vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -23,3 +22,9 @@ source ~/.vim/base.vim
 source ~/.vim/ack.vim
 source ~/.vim/nerdtree.vim
 source ~/.vim/unite.vim
+
+let g:neoformat_try_formatprg = 1     " Use formatprg when available
+let g:neoformat_only_msg_on_error = 1 " https://github.com/sbdchd/neoformat/issues/25
+
+autocmd FileType javascript setlocal formatprg=prettier_dnc\ --local-only\ --pkg-conf\ --fallback
+autocmd BufWritePre *.js Neoformat
