@@ -31,6 +31,16 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set colorcolumn=110
 set nocompatible
 
+set winwidth=120
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=10
+set winminheight=10
+set winheight=999
+
+cnoremap <expr> %% expand('%:h').'/'
+
 " Custom Bindings
 map ' `
 let mapleader = ","
