@@ -95,3 +95,10 @@ alias yrtw="yarn run test:watch"
 alias tawork="tmux attach -t work"
 
 alias kafkacat='kafkacat -X broker.version.fallback=0.8.2.2'
+
+bindkey -v
+bindkey "^R" history-incremental-pattern-search-backward
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd g edit-command-line
