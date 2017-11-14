@@ -91,8 +91,11 @@ source $ZSH/oh-my-zsh.sh
 
 # Custom aliases
 alias yr="yarn run"
+alias yrd="yarn run debug"
+alias yrl="yarn run lint"
 alias yrtw="yarn run test:watch"
 alias tawork="tmux attach -t work"
+
 
 alias kafkacat='kafkacat -X broker.version.fallback=0.8.2.2'
 
