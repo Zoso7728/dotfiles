@@ -3,25 +3,48 @@
 #############
 ### BASIC ###
 #############
-setw -g pane-base-index 1 # Default window has index of 1, not 0
+set-option -g base-index 1 # Default window has index of 1, not 0
 set -sg escape-time 0 # Remove lag when hitting escape
 set -g renumber-windows on # Allow windows to always be in the correct index order
 set-option -g allow-rename off # Do not rename window automatically
+set -g history-limit 10000 # Set history limit
 
 set -g default-terminal "xterm-256color" # Set default terminal
 set-window-option -g mode-keys vi # Allow tmux to use VI controls
 bind-key -t vi-copy 'v' begin-selection # VI visual mode binding
+
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys copy-selection
+bind-key -T copy-mode-vi Space send-keys 10 cursor-down
+bind-key -T copy-mode-vi BSpace send-keys 10 cursor-up
+bind-key -T copy-mode-vi H send-keys start-of-line
+bind-key -T copy-mode-vi L send-keys end-of-line
+bind-key -T copy-mode-vi C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
+bind-key -T copy-mode-vi C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
+bind-key -T copy-mode-vi C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
+bind-key -T copy-mode-vi C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
+
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+
+bind -n C-x send-keys -R \; clear-history # Overwrite clear history
+
+bind -n C-f choose-window -F "#W" # Custom choose window command
+bind C-p last-window # Go to last window
 
 # Set custom tmux prefix
 unbind C-b
 set -g prefix C-t
 bind C-t send-prefix
 
-# split panes using | and -
+# Default split panes command using | and -
 unbind '"'
 unbind %
 bind | split-window -h
 bind - split-window -v
+
+# Custom pane splitting
+bind i split-window -v -c "#{pane_current_path}"
+bind v split-window -h -c "#{pane_current_path}"
 
 # Easier pane switching
 bind -n C-h select-pane -L
@@ -128,5 +151,6 @@ set -g message-bg colour166
 # plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'christoomey/vim-tmux-navigator'
 
 run '~/.tmux/plugins/tpm/tpm'
