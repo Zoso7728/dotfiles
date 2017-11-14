@@ -65,6 +65,8 @@ map <C-H> <C-W>h
 map <C-L> <C-W>l
 nnoremap vv ^<C-v>g_
 
+map <C-b> :%!python -m json.tool<CR>
+
 " Jump to source tree view of current directory
 map <leader>jst :silent !open -a "/Applications/SourceTree.app" `pwd`<cr>
 
