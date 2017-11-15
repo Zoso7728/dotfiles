@@ -1,11 +1,12 @@
 call plug#begin('~/.vim/plugged')
 
 " Basic plugins
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimfiler.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'mileszs/ack.vim'
 Plug 'sbdchd/neoformat'
@@ -21,8 +22,9 @@ color dracula
 source ~/.vim/base.vim
 
 source ~/.vim/ack.vim
-source ~/.vim/nerdtree.vim
+" source ~/.vim/nerdtree.vim
 source ~/.vim/unite.vim
+source ~/.vim/vimfinder.vim
 source ~/.vim/incsearch.vim
 
 let g:neoformat_try_formatprg = 1     " Use formatprg when available
