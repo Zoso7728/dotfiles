@@ -40,8 +40,8 @@ bind C-t send-prefix
 # Default split panes command using | and -
 unbind '"'
 unbind %
-bind | split-window -h
-bind - split-window -v
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
 
 # Custom pane splitting
 bind i split-window -v -c "#{pane_current_path}"

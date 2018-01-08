@@ -67,6 +67,8 @@ nnoremap vv ^<C-v>g_
 
 map <C-b> :%!python -m json.tool<CR>
 
+map <leader>. :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
+
 " Jump to source tree view of current directory
 map <leader>jst :silent !open -a "/Applications/SourceTree.app" `pwd`<cr>
 

@@ -9,8 +9,13 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'mileszs/ack.vim'
-Plug 'sbdchd/neoformat'
+"Plug 'sbdchd/neoformat'
+Plug 'neomake/neomake'
 Plug 'haya14busa/incsearch.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/ycmd'
+Plug 'tpope/vim-surround'
+Plug 'bronson/vim-trailing-whitespace'
 
 call plug#end()
 
@@ -23,12 +28,13 @@ source ~/.vim/base.vim
 
 source ~/.vim/ack.vim
 " source ~/.vim/nerdtree.vim
+source ~/.vim/neomake.vim
 source ~/.vim/unite.vim
 source ~/.vim/vimfinder.vim
 source ~/.vim/incsearch.vim
 
-let g:neoformat_try_formatprg = 1     " Use formatprg when available
-let g:neoformat_only_msg_on_error = 1 " https://github.com/sbdchd/neoformat/issues/25
+"let g:neoformat_try_formatprg = 1     " Use formatprg when available
+"let g:neoformat_only_msg_on_error = 1 " https://github.com/sbdchd/neoformat/issues/25
 
-autocmd FileType javascript setlocal formatprg=prettier_dnc\ --local-only\ --pkg-conf\ --fallback
-autocmd BufWritePre *.js Neoformat
+"autocmd FileType javascript setlocal formatprg=prettier_dnc\ --local-only\ --pkg-conf\ --fallback
+"autocmd BufWritePre *.js Neoformat
