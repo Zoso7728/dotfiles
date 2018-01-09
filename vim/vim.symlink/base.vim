@@ -65,6 +65,8 @@ map <C-H> <C-W>h
 map <C-L> <C-W>l
 nnoremap vv ^<C-v>g_
 
+autocmd BufWritePre * %s/\s\+$//e
+
 map <C-b> :%!python -m json.tool<CR>
 
 map <leader>. :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
