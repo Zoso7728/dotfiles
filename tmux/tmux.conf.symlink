@@ -30,7 +30,7 @@ is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
 bind -n C-x send-keys -R \; clear-history # Overwrite clear history
 
 bind -n C-f choose-window -F "#W" # Custom choose window command
-bind C-p last-window # Go to last window
+bind C-t last-window # Go to last window
 
 # Set custom tmux prefix
 unbind C-b
