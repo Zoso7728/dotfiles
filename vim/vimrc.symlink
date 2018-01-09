@@ -15,7 +15,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Valloric/ycmd'
 Plug 'tpope/vim-surround'
-Plug 'bronson/vim-trailing-whitespace'
+Plug 'apazzolini/vim-javascript'
 
 call plug#end()
 
