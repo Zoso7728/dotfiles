@@ -97,8 +97,11 @@ alias yrtw="yarn run test:watch"
 alias tawork="tmux attach -t work"
 alias txnew="tmux new-session -s work"
 
-
 alias kafkacat='kafkacat -X broker.version.fallback=0.8.2.2 -b 10.0.101.172'
+
+if type nvim > /dev/null 2>&1; then
+    alias v='nvim'
+fi
 
 bindkey -v
 bindkey "^R" history-incremental-pattern-search-backward

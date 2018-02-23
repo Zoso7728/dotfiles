@@ -31,6 +31,8 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set colorcolumn=110
 set nocompatible
 
+set pastetoggle=<F2>
+
 set winwidth=120
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
@@ -40,6 +42,8 @@ set winminheight=10
 set winheight=999
 
 cnoremap <expr> %% expand('%:h').'/'
+
+let g:netrw_altfile = 1
 
 " Custom Bindings
 map ' `
@@ -66,6 +70,9 @@ map <C-L> <C-W>l
 nnoremap vv ^<C-v>g_
 
 autocmd BufWritePre * %s/\s\+$//e
+
+" Javascript ES6 arrow function helper
+imap <c-l> <space>=><space>
 
 map <C-b> :%!python -m json.tool<CR>
 
