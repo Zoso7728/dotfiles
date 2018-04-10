@@ -1,16 +1,20 @@
-# Crafted by Marques Robinson (Zoso7728) on 2017-11-13
+# remap prefix to Control + p
+unbind C-b
+set -g prefix C-p
+bind C-p send-prefix
 
-#############
-### BASIC ###
-#############
-set-option -g base-index 1 # Default window has index of 1, not 0
-set -sg escape-time 0 # Remove lag when hitting escape
-set -g renumber-windows on # Allow windows to always be in the correct index order
-set-option -g allow-rename off # Do not rename window automatically
-set -g history-limit 10000 # Set history limit
+# basic configurations
+set -g default-terminal "xterm-256color"
+set -g history-limit 10000
+set -g renumber-windows on
+set-option -g base-index 1
+set-option -g allow-rename off
+set -sg escape-time 0
+set-window-option -g mode-keys vi
 
-set -g default-terminal "xterm-256color" # Set default terminal
-set-window-option -g mode-keys vi # Allow tmux to use VI controls
+bind -n C-f choose-window -F "#W" # Custom choose window command
+bind C-p last-window # Go to last window
+bind -n C-x send-keys -R \; clear-history # Overwrite clear history
 
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 
@@ -24,43 +28,34 @@ bind-key -T copy-mode-vi C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D
 bind-key -T copy-mode-vi C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
 bind-key -T copy-mode-vi C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
 
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-
-bind -n C-x send-keys -R \; clear-history # Overwrite clear history
-
-bind -n C-f choose-window -F "#W" # Custom choose window command
-bind C-t last-window # Go to last window
-
-# Set custom tmux prefix
-unbind C-b
-set -g prefix C-t
-bind C-t send-prefix
-
-# Default split panes command using | and -
-unbind '"'
-unbind %
-bind | split-window -h -c "#{pane_current_path}"
-bind - split-window -v -c "#{pane_current_path}"
-
-# Custom pane splitting
-bind i split-window -v -c "#{pane_current_path}"
-bind v split-window -h -c "#{pane_current_path}"
-
 # Easier pane switching
 bind -n C-h select-pane -L
 bind -n C-j select-pane -D
 bind -n C-k select-pane -U
 bind -n C-l select-pane -R
 
+# Custom pane splitting
+unbind '"'
+unbind %
+bind h split-window -v -c "#{pane_current_path}"
+bind v split-window -h -c "#{pane_current_path}"
+
 # tmux-better-mouse-mode
 set -g @scroll-without-changing-pane "on"
 set -g @scroll-speed-num-lines-per-scroll "9"
 setw -g mouse on
 
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+
 # Useful reorder window method
 bind S-Left swap-window -t -1
 bind S-Right swap-window -t +1
+
+# new from andre, autocomplete and syntax highlighting for terminal
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# bindkey '^ ' autosuggest-accept
 
 ######################
 ### DESIGN CHANGES ###

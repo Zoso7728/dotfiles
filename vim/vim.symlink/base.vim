@@ -1,47 +1,30 @@
-" Basic configurations
-set ic
-set scs
-set nohlsearch
-set autoindent
-set smartindent
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-set showmatch
+set ic scs
+set ai si
+set ts=8 sts=4 sw=4 noet sta
+set nosm
 set vb t_vb=
-set incsearch
-set number
-set wrap linebreak nolist
-set foldmethod=indent
-set foldnestmax=10
-set nofoldenable
-set foldlevel=1
+set is
+set nu
+set wrap lbr nolist
+set nofen
 set mouse=a
-set splitbelow
-set splitright
-set sidescrolloff=5
-set scrolloff=1
-set autoread
-set formatoptions-=co
-set nojoinspaces
-set backspace=indent,eol,start
-set clipboard=unnamed
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-set colorcolumn=110
-set nocompatible
+set sb spr
+set siso=0
+set ar
+set fo-=co
+set nojs
+set bs=indent,eol,start
+set cb=unnamedplus
+set pt=<F2>
+set icm=split
 
-set pastetoggle=<F2>
-
-set inccommand=split
-
-set winwidth=120
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
 " fail.
-set winheight=10
-set winminheight=10
-set winheight=999
+set wh=10
+set wmh=10
+set wh=999
+set wiw=120
 
 cnoremap <expr> %% expand('%:h').'/'
 
@@ -64,12 +47,14 @@ map <C-p> :bprev<CR>
 inoremap jj <Esc>
 noremap j gj
 noremap k gk
-vmap <leader>y "*y
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
 nnoremap vv ^<C-v>g_
+
+vmap <leader>y "*y
+nmap <leader>p "*p
 
 autocmd BufWritePre * %s/\s\+$//e
 
