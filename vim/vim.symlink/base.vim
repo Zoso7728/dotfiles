@@ -1,6 +1,6 @@
 set ic scs
 set ai si
-set ts=8 sts=4 sw=4 noet sta
+set ts=4 sts=4 sw=4 et sta
 set nosm
 set vb t_vb=
 set is
@@ -18,7 +18,8 @@ set cb=unnamedplus
 set pt=<F2>
 set icm=split
 
-" We have to have a winheight bigger than we want to set winminheight. But if
+" Width & Height Settings
+" Notes: We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
 " fail.
 set wh=10
@@ -26,22 +27,32 @@ set wmh=10
 set wh=999
 set wiw=120
 
+let mapleader = ","
+
+map ; :
+map <Space> 10j
+map <BS> 10k
+
+" Neat json pretty print tool
+map <C-b> :%!python -m json.tool<CR>
+
+" Javascript ES6 arrow function helper
+imap <c-l> <space>=><space>
+
 cnoremap <expr> %% expand('%:h').'/'
 
 let g:netrw_altfile = 1
 
+" Macro for dynamically adding .only to a test block
+nmap <leader>ot mT:%s/test.only/test/g<cr>'T?test(<cr>cetest.only<esc>'T
+
 " Custom Bindings
-map ' `
-let mapleader = ","
 map Y y$
-map ; :
 map H ^
 map L $
 map <C-B> <C-6>
 map S i<CR><Esc>k$
 nmap K kJ
-map <Space> 10j
-map <BS> 10k
 map <C-n> :bnext<CR>
 map <C-p> :bprev<CR>
 inoremap jj <Esc>
@@ -57,11 +68,6 @@ vmap <leader>y "*y
 nmap <leader>p "*p
 
 autocmd BufWritePre * %s/\s\+$//e
-
-" Javascript ES6 arrow function helper
-imap <c-l> <space>=><space>
-
-map <C-b> :%!python -m json.tool<CR>
 
 map <leader>. :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
 
