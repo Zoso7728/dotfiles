@@ -44,7 +44,10 @@ cnoremap <expr> %% expand('%:h').'/'
 let g:netrw_altfile = 1
 
 " Macro for dynamically adding .only to a test block
-nmap <leader>ot mT:%s/test.only/test/g<cr>'T?test(<cr>cetest.only<esc>'T
+nmap <leader>ot mT:%s/test.only/test/ge<cr>'T?test(<cr>cetest.only<esc>'T
+
+" Macro for removing all .only from a file
+nmap <leader>ox mT:%s/test.only/test/ge<cr>'T
 
 " Custom Bindings
 map Y y$
