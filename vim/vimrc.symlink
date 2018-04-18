@@ -1,37 +1,25 @@
 call plug#begin('~/.vim/plugged')
 
+" Vim Tmux Navigator
+Plug 'christoomey/vim-tmux-navigator'
 
 " File System Interface (nerdtree)
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'tpope/vim-surround'
-Plug 'christoomey/vim-tmux-navigator'
-" Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'haya14busa/incsearch.vim'
-Plug 'scrooloose/nerdcommenter'
-" Plug 'easymotion/vim-easymotion'
-" Plug 'godlygeek/tabular'
-" Plug 'raimondi/delimitmate'
-" Plug 'alvan/vim-closetag'
-" Plug 'sickill/vim-pasta'
-" Plug '/usr/local/opt/fzf'
-" Plug 'junegunn/fzf.vim'
-" Plug 'romainl/vim-qf'
-
-
-
-Plug 'jiangmiao/auto-pairs'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'Shougo/unite.vim'
-Plug 'mileszs/ack.vim'
-" Plug 'sbdchd/neoformat'
-" Plug 'neomake/neomake'
-Plug 'w0rp/ale', { 'for': 'javascript' }
+" Javascript Stylings
 Plug 'apazzolini/vim-javascript'
 
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'Shougo/vimfiler.vim'
+" Utilities
+Plug 'tpope/vim-surround'
+Plug 'haya14busa/incsearch.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'w0rp/ale', { 'for': 'javascript'  }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'romainl/vim-qf'
 
 call plug#end()
 
@@ -39,23 +27,11 @@ filetype off
 syntax on
 
 color dracula
-
-" Custom Config Paths
 source ~/.vim/base.vim
-
+source ~/.vim/tools.vim
 source ~/.vim/ale.vim
-
 source ~/.vim/nerdtree.vim
-
-source ~/.vim/ack.vim
 source ~/.vim/nerdcommenter.vim
-" source ~/.vim/neomake.vim
-source ~/.vim/unite.vim
-" source ~/.vim/vimfinder.vim
 source ~/.vim/incsearch.vim
-
-"let g:neoformat_try_formatprg = 1     " Use formatprg when available
-"let g:neoformat_only_msg_on_error = 1 " https://github.com/sbdchd/neoformat/issues/25
-
-"autocmd FileType javascript setlocal formatprg=prettier_dnc\ --local-only\ --pkg-conf\ --fallback
-"autocmd BufWritePre *.js Neoformat
+source ~/.vim/fzf.vim
+source ~/.vim/qf.vim

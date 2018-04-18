@@ -1,2 +1,3 @@
 let g:NERDSpaceDelims = 1
-map <Leader>ct <Leader>c<space>
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDDefaultAlign = 'left'
