@@ -14,9 +14,6 @@ if hash brew 2>/dev/null; then
     [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 fi
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
@@ -84,21 +81,14 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Custom aliases
 alias yr="yarn run"
 alias yrd="yarn run debug"
 alias yrl="yarn run lint"
 alias yrtw="yarn run test:watch"
 alias tawork="tmux attach -t work"
 alias txnew="tmux new-session -s work"
-
 alias kafkacat='kafkacat -X broker.version.fallback=0.8.2.2 -b 10.0.101.172'
-
 if type nvim > /dev/null 2>&1; then
     alias v='nvim'
 fi
@@ -110,12 +100,23 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd g edit-command-line
 
+# Custom AWS Methods
 awstail () {
-        if [ -z "$2" ]
-        then
-                time=5m
-        else
-                time=$2
-        fi
-        awslogs get $1 ALL --start="$time ago" --watch --no-color -S -G | bunyan -o short
+    if [ -z "$2" ]
+    then
+        time=5m
+    else
+        time=$2
+    fi
+
+    awslogs get $1 ALL --start="$time ago" --watch --no-color -S -G | bunyan -o short
 }
+
+awsrange() {
+    end=`gdate -ud "$2 UTC + $3 minute"`
+    awslogs get $1 ALL --start="$2" --end="$end" --no-color -S -G | bunyan -o short
+}
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^ ' autosuggest-accept

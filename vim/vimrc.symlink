@@ -24,6 +24,16 @@ Plug 'alvan/vim-closetag'
 Plug 'sickill/vim-pasta'
 Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'easymotion/vim-easymotion'
+
+if has('nvim')
+    Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ }
+    Plug 'Shougo/neosnippet.vim'
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
 
 " Colorschemes
 Plug 'apazzolini/wave.vim'
@@ -53,3 +63,9 @@ source ~/.vim/nerdcommenter.vim
 source ~/.vim/incsearch.vim
 source ~/.vim/fzf.vim
 source ~/.vim/qf.vim
+source ~/.vim/easymotion.vim
+
+if has('nvim')
+    source ~/.vim/deoplete.vim
+    source ~/.vim/language-client.vim
+endif
