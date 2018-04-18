@@ -1,3 +1,113 @@
+snippet new-arrow-function
+alias arr
+options word
+    => {
+    ${0:TARGET}
+    }
+
+snippet new-promise
+alias prom
+options word
+	new Promise((resolve, reject) => {
+		${0:TARGET}
+	})
+
+snippet new-transaction
+alias tx
+options indent
+	transaction(async tquery => {
+		${0:TARGET}
+	})
+
+snippet new-query
+alias cque
+options indent
+	query({
+		sql: \`
+			${0:TARGET}
+		\`,
+		params: [
+		],
+	})
+
+snippet new-query-q1
+alias cq1
+options indent
+	query.one({
+		sql: \`
+			${0:TARGET}
+		\`,
+		params: [
+		],
+	})
+
+snippet new-query-q
+alias cq
+options indent
+	q({
+		sql: \`
+			${0:TARGET}
+		\`,
+		params: [
+		],
+	})
+
+snippet update-query
+alias update
+options indent
+	update({
+		request,
+		table: '${0:TARGET}',
+		props: {},
+		where: {
+			clause: '',
+			params: [],
+		},
+	})
+
+snippet insert-query
+alias insert
+options indent
+	insert({
+		request,
+		table: '${0:TARGET}',
+		mapper: {},
+		rows: [],
+        onDuplicateKey: '',
+	})
+
+snippet delete-query
+alias del
+options indent
+	del({
+		request,
+		table: '${0:TARGET}',
+		where: {
+			clause: '',
+			params: [],
+		},
+	})
+
+snippet server-inject-as-admin
+alias si
+options indent
+	const res = await server.injectAsAdmin({
+		method: 'GET',
+		url: '/api/v3/${0:TARGET}',
+	})
+
+snippet server-inject-as
+alias sia
+options indent
+	const res = await server.injectAs('${0:TARGET}', {
+		method: 'GET',
+		url: '/api/v3/',
+	})
+
+snippet give-logger
+alias clog
+	const log = require('mvp-common').logger(__filename) // eslint-disable-line
+
 snippet import-mvp-common
 alias imc
 	import { ${0:TARGET} } from 'mvp-common'
@@ -8,4 +118,4 @@ alias ild
 
 snippet import-bluebird
 alias ibb
-	import Promise from 'bluebird'
+	import Promise from 'bluebird'<Paste>
