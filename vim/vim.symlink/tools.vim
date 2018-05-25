@@ -42,3 +42,8 @@ autocmd BufReadPost *
    \   exe "normal g`\"" |
    \ endif
 
+" Opens blank vim files
+nnoremap c<C-j> :bel sp new<cr>
+nnoremap c<C-k> :abo sp new<cr>
+nnoremap c<C-h> :lefta vsp new<cr>
+nnoremap c<C-l> :rightb vsp new<cr>
