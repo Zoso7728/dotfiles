@@ -7,14 +7,14 @@ command! -bang -nargs=* Rg
 
 nnoremap <leader>b :Buffers<cr>
 
-nnoremap <leader>e :call fzf#run({'sink': 'edit'})<cr>
-nnoremap <leader>t :call fzf#run({'sink': 'tabedit'})<cr>
-nnoremap <leader>s :call fzf#run({'sink': 'split'})<cr>
-nnoremap <leader>v :call fzf#run({'sink': 'vsplit'})<cr>
+nnoremap <leader>e :call fzf#run({'sink': 'edit', 'source': 'git ls-files --exclude-standard --others --cached'})<cr>
+nnoremap <leader>t :call fzf#run({'sink': 'tabedit', 'source': 'git ls-files --exclude-standard --others --cached'})<cr>
+nnoremap <leader>s :call fzf#run({'sink': 'split', 'source': 'git ls-files --exclude-standard --others --cached'})<cr>
+nnoremap <leader>v :call fzf#run({'sink': 'vsplit', 'source': 'git ls-files --exclude-standard --others --cached'})<cr>
 
-nnoremap <leader>E :call fzf#run({'dir': expand('%:h'), 'sink': 'edit'})<cr>
-nnoremap <leader>T :call fzf#run({'dir': expand('%:h'), 'sink': 'tabedit'})<cr>
-nnoremap <leader>S :call fzf#run({'dir': expand('%:h'), 'sink': 'split'})<cr>
-nnoremap <leader>V :call fzf#run({'dir': expand('%:h'), 'sink': 'vsplit'})<cr>
+nnoremap <leader>E :call fzf#run({'dir': expand('%:h'), 'sink': 'edit', 'source': 'git ls-files --exclude-standard --others --cached'})<cr>
+nnoremap <leader>T :call fzf#run({'dir': expand('%:h'), 'sink': 'tabedit', 'source': 'git ls-files --exclude-standard --others --cached'})<cr>
+nnoremap <leader>S :call fzf#run({'dir': expand('%:h'), 'sink': 'split', 'source': 'git ls-files --exclude-standard --others --cached'})<cr>
+nnoremap <leader>V :call fzf#run({'dir': expand('%:h'), 'sink': 'vsplit', 'source': 'git ls-files --exclude-standard --others --cached'})<cr>
 
 nnoremap <leader>a :Rg!<space>
