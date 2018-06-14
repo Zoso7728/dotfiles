@@ -25,6 +25,7 @@ Plug 'sickill/vim-pasta'
 Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
 
 if has('nvim')
     Plug 'autozimu/LanguageClient-neovim', {
@@ -64,6 +65,7 @@ source ~/.vim/incsearch.vim
 source ~/.vim/fzf.vim
 source ~/.vim/qf.vim
 source ~/.vim/easymotion.vim
+source ~/.vim/multiple-cursors.vim
 
 if has('nvim')
     source ~/.vim/deoplete.vim
