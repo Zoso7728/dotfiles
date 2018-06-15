@@ -1,3 +1,24 @@
+# Loggers
+snippet common-logger
+alias clog
+    const log = require('mvp-common').logger(__filename) // eslint-disable-line
+
+snippet error-logger
+alias elog
+    log.error(${0:TARGET})
+
+snippet debug-logger
+alias dlog
+    log.debug(${0:TARGET})
+
+snippet inspect-logger
+alias slog
+    log.inspect(${0:TARGET})
+
+snippet info-logger
+alias flog
+    log.info(${0:TARGET})
+
 snippet new-arrow-function
 alias arr
 options word
@@ -103,10 +124,6 @@ options indent
 		method: 'GET',
 		url: '/api/v3/',
 	})
-
-snippet give-logger
-alias clog
-	const log = require('mvp-common').logger(__filename) // eslint-disable-line
 
 snippet import-mvp-common
 alias imc
