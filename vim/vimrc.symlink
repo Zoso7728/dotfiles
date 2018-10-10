@@ -9,6 +9,7 @@ Plug 'scrooloose/nerdtree'
 " Git
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " Javascript Stylings
 Plug 'apazzolini/vim-javascript', { 'for': 'javascript' }
@@ -30,6 +31,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
+Plug 'rakr/vim-one'
 
 if has('nvim')
     Plug 'autozimu/LanguageClient-neovim', {
@@ -40,28 +42,21 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
-" Colorschemes
-Plug 'apazzolini/wave.vim'
-
 call plug#end()
 
 filetype plugin indent on
 syntax enable
 
-set background=dark
 if has('gui_vimr')
-    colorscheme base16-ashes
-    "set guifont=Operator\ Mono\ Book:h11
     highlight Normal ctermbg=NONE
     highlight TabLineFill ctermbg=NONE
 else
-    silent! colorscheme wave
-    set notermguicolors
     hi! Normal ctermbg=NONE guibg=NONE
 endif
 
 source ~/.vim/base.vim
 source ~/.vim/tools.vim
+
 source ~/.vim/ale.vim
 source ~/.vim/nerdtree.vim
 source ~/.vim/nerdcommenter.vim
@@ -75,3 +70,18 @@ if has('nvim')
     source ~/.vim/deoplete.vim
     source ~/.vim/language-client.vim
 endif
+
+" Set the background theme to dark
+set background=dark
+
+" Call the theme one
+colorscheme one "(one is the name of color scheme)
+
+" Don't forget set the airline theme as well.
+let g:airline_theme='one'
+
+" This line enables the true color support.
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" Note, the above line is ignored in Neovim 0.1.5 above, use this line instead.
+set termguicolors
