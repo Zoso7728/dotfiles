@@ -3,6 +3,10 @@ snippet common-logger
 alias clog
     const log = require('mvp-common').logger(__filename) // eslint-disable-line
 
+snippet worker-logger
+alias wlog
+    const log = require('@/utils.js').logger(__filename) // eslint-disable-line
+
 snippet error-logger
 alias elog
     log.error(${0:TARGET})
