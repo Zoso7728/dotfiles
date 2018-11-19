@@ -20,5 +20,5 @@ nnoremap <leader>S :call fzf#run({'dir': expand('%:h'), 'sink': 'split', 'source
 
 nnoremap <leader>V :call fzf#run({'dir': expand('%:h'), 'sink': 'vsplit', 'source': 'git ls-files --exclude-standard --others --cached'})<cr>
 
-" nnoremap <leader>a :Rg!<space>
-nmap <Leader>a :Rg! <C-r><C-w><CR>
+nnoremap <leader>a :Rg!<space>
+" nmap <Leader>a :Rg! <C-r><C-w><CR>
